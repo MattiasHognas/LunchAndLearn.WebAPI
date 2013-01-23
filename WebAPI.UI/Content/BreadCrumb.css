@@ -1,0 +1,228 @@
+/* Float Clearing
+ ---------------------------------------------------------------------*/
+
+.module:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* float clearing for IE6 */
+
+* html .module {
+    height: 1%;
+    overflow: visible;
+}
+
+/* float clearing for IE7 */
+
+* + html .module { min-height: 1%; }
+
+/* Breadcrumb Styles
+ ---------------------------------------------------------------------*/
+
+.breadCrumb {
+    /*border:solid 1px #dedede;*/
+    background: #fff;
+    display: block;
+    float: left;
+    height: 21px;
+    margin: 0;
+    margin: -10px 0 0;
+    overflow: hidden;
+    padding: 5px;
+    padding: 5px;
+    width: 990px;
+}
+
+.breadCrumb ul {
+    display: block;
+    height: 21px;
+    margin: 0;
+    padding: 0;
+}
+
+.breadCrumb ul li {
+    background: url(../Images/Chevron.gif) no-repeat 100% 0;
+    display: block;
+    float: left;
+    font-size: .9167em;
+    height: 21px;
+    line-height: 21px;
+    margin: 0px 6px 0px 0;
+    overflow: hidden;
+    padding: 0px 10px 0px 0;
+    position: relative;
+}
+
+.breadCrumb ul li div.chevronOverlay {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.breadCrumb ul li span {
+    display: block;
+    overflow: hidden;
+}
+
+.breadCrumb ul li a {
+    display: block;
+    float: left;
+    height: 21px;
+    line-height: 21px;
+    overflow: hidden;
+    position: relative;
+}
+
+.breadCrumb ul li.first a {
+    background: url(../Images/IconHome.gif) no-repeat 0 0;
+    height: 16px !important;
+    margin-top: 2px;
+    overflow: hidden;
+    padding: 0;
+    text-indent: -1000em;
+    width: 16px;
+}
+
+.breadCrumb ul li.first a:hover { background-position: 0 -16px; }
+
+.breadCrumb ul li.last {
+    background: none;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.chevronOverlay {
+    background: url(../Images/ChevronOverlay.png) no-repeat 100% 0;
+    display: none;
+    height: 20px;
+    width: 13px;
+}
+
+/* Float Clearing
+ ---------------------------------------------------------------------*/
+
+.module:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* float clearing for IE6 */
+
+* html .module {
+    height: 1%;
+    overflow: visible;
+}
+
+/* float clearing for IE7 */
+
+* + html .module { min-height: 1%; }
+
+
+
+{
+
+margin: .833em 0; 
+
+padding-left: 2em;
+} 
+
+ul { list-style-type: disc; }
+
+ol { list-style-type: decimal; }
+
+ul li, ol li { line-height: 1.5em; }
+
+dt { margin: .416em 0 0 0; }
+
+dd { margin: .416em 0 .416em 1.1667em; }
+
+pre, code, tt {
+    font-family: "Andale Mono", "Lucida Console", "Courier New", Courier, monospace;
+    margin: .833em 0;
+}
+
+sub {
+    font-size: smaller;
+    line-height: inherit;
+    vertical-align: sub;
+}
+
+sup {
+    font-size: smaller;
+    line-height: inherit;
+    vertical-align: super;
+}
+
+/* Page Specific
+ ---------------------------------------------------------------------*/
+
+#container {
+
+    margin: 0 auto 10px;
+    text-align: left;
+    width: 1000px;
+}
+
+.breadCrumbHolder { margin: 0 0 20px 0; }
+
+pre {
+    background: #ddd;
+    border: solid 1px #fff;
+    color: #111;
+    padding: 10px;
+}
+
+.description {
+    float: left;
+    margin-right: 20px;
+    width: 700px;
+}
+
+.sideBar {
+    background: #fff;
+    border: solid 1px #dedede;
+    float: left;
+    margin: 50px 0 0 0;
+    padding: 20px;
+    width: 238px;
+}
+
+.license p {
+    color: #888;
+    font-size: 0.83333em;
+}
+
+/* Page modify
+ ---------------------------------------------------------------------*/
+
+.bred-crumb-area {
+    color: #333333;
+    font-size: 12px;
+}
+
+.bred-crumb {
+    color: #333333;
+    float: left;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.bred-crumb a {
+    color: #333333;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.bred-crumb a:hover { color: #101010; }
+
+.bred-crumb-detailpage { padding-top: 4px; }
+
+.pl2bcrclr { margin: -2px; }

@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Web API";
+}
+@section scripts {
+    <script type="text/javascript">
+        $(function() {
+            $.getJSON(
+                "api/books?$orderby=Id asc",
+                function (data) {
+                    $.each(data,
+                        function(index, value) {
+                            $("#bookTemplate").tmpl(value).appendTo("#books");
+                        }
+                    );
+                    $("#loader").hide("slow");
+                    $("#addBook").show("slow");
+                }
+            );
+            $("#addBook").on("submit", function (e) {
+                $.post(
+                    "api/books",
+                    $("#addBook").serialize(),
+                    function(value) {
+                        $("#bookTemplate").tmpl(value).appendTo("#books");
+                        $("#name").val("");
+                        $("#price").val("");
+                    },
+                    "json"
+                );
+                e.preventDefault();
+                return false;
+            });
+            $("#searchBook").on("click", function (e) {
+                var id = $("#bookId").val();
+                $.getJSON("api/books/" + id,
+                    function (data) {
+                        var str = data.Name + ": $" + data.Price;
+                        $("#book").html(str);
+                    })
+                    .fail(
+                        function (jqXhr, textStatus, err) {
+                            $("#book").html("Error: " + err);
+                        });
+                e.preventDefault();
+                return false;
+            });
+            $(document).on("click", ".removeBook", function () {
+                $.ajax({
+                    url: $(this).data("url"),
+                    type: "DELETE",
+                    cache: false,
+                    context: this,
+                    statusCode: { 
+                        204: function () {
+                            $(this).closest("li").remove();
+                        } 
+                    }
+                });
+                e.preventDefault();
+                return false;
+            });
+        });
+    </script>
+    <script id="bookTemplate" type="text/html"> 
+        <li>
+            <p>
+                <strong> Book ID:</strong> ${ Id }
+                <br />
+                <strong> Book Name:</strong> ${ Name }
+                <br />
+                <strong> Price: $</strong> ${ Price }
+                <br />
+                <input type="button" data-url="${ Self }" value="Remove" class="button small red removeBook" />
+            </p>
+        </li>
+    </script>
+}
+<form method="post" id="addBook">
+    <div class="container_16">
+        <span class="title-01">Lunch & Learn Web API</span>
+    </div>
+    <div class="container_16">
+        <div class="grid_16 body-container">
+            <div class="margin grid_6 alpha">
+                <label for="Name">
+                    Name</label><br />
+                <input type="text" id="name" name="Name" class="text grid_4" />
+                <br class="clear" />
+                <label for="Price">
+                    Price</label><br />
+                <input type="text" id="price" name="Price" class="text grid_4" />
+                <br class="clear" />
+                <input type="submit" value="Add" class="button small green" />
+                <br />
+                <br />
+                <label for="bookId">
+                    Search By ID
+                </label>
+                <br />
+                <input type="text" id="bookId" size="20" class="text grid_4" /><br class="clear" />
+                <input type="button" id="searchBook" value="Search" class="button small gray" />
+                <br />
+                <br class="clear" />
+                <strong id="book"></strong>
+                <br class="clear" />
+            </div>
+            <div class="grid_8 omega">
+                <img id="loader" src="images/ajax-loader.gif" />
+                <ul id="books" class="books">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br class="clear" />
+    <div class="footer clearfix">
+    </div>
+</form>
